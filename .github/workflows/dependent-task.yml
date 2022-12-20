@@ -1,0 +1,17 @@
+name: Dependent task
+on: pull_request
+
+jobs:
+  dependabot:
+    name: Some dependent task
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for tests to succeed
+        uses: lewagon/wait-on-check-action@v1.2.0
+        with:
+          ref: ${{ github.ref }}
+          check-name: Run tests
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          wait-interval: 10
+      - name: Do something
+        run: echo "ALL DONE - YAY"
