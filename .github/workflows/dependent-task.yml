@@ -2,15 +2,31 @@ name: Dependent task
 on: pull_request
 
 jobs:
-  dependabot:
-    name: Some dependent task
+  pr_checks:
+    name: Auto Approve PR
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    # if: github.actor == 'dependabot[bot]' # use this in govuk-developer-docs
     steps:
       - name: Wait for tests to succeed
         uses: lewagon/wait-on-check-action@v1.2.0
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           check-name: Run tests
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          wait-interval: 10
+      - name: Approve the PR
+        uses: hmarr/auto-approve-action@v3.1.0
+  dependabot:
+    name: Some dependent task
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for PR to be approved
+        uses: lewagon/wait-on-check-action@v1.2.0
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          check-name: Auto Approve PR
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 10
       - name: Do something
