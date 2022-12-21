@@ -6,4 +6,4 @@ jobs:
     name: Run tests
     runs-on: ubuntu-latest
     steps:
-      - run: sleep 300;
+      - run: sleep 120;
