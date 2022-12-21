@@ -1,3 +1,3 @@
 # test-auto-merge
 
-Testing something
+Testing something else
