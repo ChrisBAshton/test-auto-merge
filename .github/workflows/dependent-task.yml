@@ -2,14 +2,14 @@ name: Dependent task
 on: pull_request
 
 jobs:
-  # check_if_qualifies:
-  #   if: github.actor == 'dependabot[bot]'
-  #   run: echo "Qualifies - yay!"
-  #   runs-on: ubuntu-latest
+  check_if_qualifies:
+    if: github.actor == 'ChrisBAshton'
+    run: echo "Qualifies - yay!"
+    runs-on: ubuntu-latest
   pr_checks:
     name: Auto Approve PR
     runs-on: ubuntu-latest
-    # needs: check_if_qualifies
+    needs: check_if_qualifies
     permissions:
       pull-requests: write
     # if: github.actor == 'dependabot[bot]' # use this in govuk-developer-docs
@@ -26,7 +26,7 @@ jobs:
   dependabot:
     name: Some dependent task
     runs-on: ubuntu-latest
-    # needs: check_if_qualifies
+    needs: check_if_qualifies
     steps:
       - name: Wait for PR to be approved
         uses: lewagon/wait-on-check-action@v1.2.0
