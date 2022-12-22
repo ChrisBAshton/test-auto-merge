@@ -23,6 +23,8 @@ jobs:
           wait-interval: 10
       - name: Approve the PR
         uses: hmarr/auto-approve-action@v3.1.0
+        with:
+          github-token: ${{ secrets.APPROVE_PR_ACCESS_TOKEN }}
   dependabot:
     name: Some dependent task
     runs-on: ubuntu-latest
