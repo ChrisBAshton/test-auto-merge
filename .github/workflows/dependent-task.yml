@@ -8,7 +8,6 @@ permissions:
 jobs:
   validate_this_is_dependabot:
     runs-on: ubuntu-latest
-    if: ${{ github.actor !== 'dependabot[bot]' }} # conditional reversed for testing
     steps:
       - run: echo "This is not Dependabot. Good. In govuk-developer-docs, we'd check the opposite."
   # validate_this_is_an_allowed_dependency:
