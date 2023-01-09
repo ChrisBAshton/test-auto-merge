@@ -5,6 +5,8 @@ permissions:
   contents: write
   pull-requests: write
 
+# test
+
 jobs:
   validate_this_is_dependabot:
     runs-on: ubuntu-latest
