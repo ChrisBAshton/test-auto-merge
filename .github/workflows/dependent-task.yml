@@ -15,11 +15,11 @@ jobs:
     needs: validate_this_is_dependabot
     runs-on: ubuntu-latest
     steps:
-      - name: Dependabot metadata
-        id: metadata
-        uses: dependabot/fetch-metadata@v1.3.4
-        with:
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
+      # - name: Dependabot metadata
+      #   id: metadata
+      #   uses: dependabot/fetch-metadata@v1.3.4
+      #   with:
+      #     github-token: "${{ secrets.GITHUB_TOKEN }}"
       - # if: ${{contains(env.AUTO_MERGE, steps.metadata.outputs.dependency-names) && contains(env.SEMVER, steps.metadata.outputs.update-type)}}
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
