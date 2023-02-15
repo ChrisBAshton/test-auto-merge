@@ -7,3 +7,4 @@ This should auto merge...
 test
 TEST
 TEST
+TEST
