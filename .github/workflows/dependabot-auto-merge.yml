@@ -49,7 +49,7 @@ jobs:
       - name: Approve the PR
         uses: hmarr/auto-approve-action@v3.1.0
         with:
-          github-token: ${{ secrets.APPROVE_PR_ACCESS_TOKEN }}
+          github-token: ${{secrets.GITHUB_TOKEN}} # commenting out `${{ secrets.APPROVE_PR_ACCESS_TOKEN }}` as I want to auto-approve my own PR, only in this test repo
       - name: Merge the PR
         run: gh pr merge --auto --merge "$PR_URL"
         env:
