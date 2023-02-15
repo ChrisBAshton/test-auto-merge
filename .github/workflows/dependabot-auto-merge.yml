@@ -37,9 +37,7 @@ jobs:
       feature_is_enabled: ${{ steps.check_if_feature_is_enabled.outputs.feature_is_enabled }}
     steps:
       id: check_if_feature_is_enabled
-      run: |
-        feature_is_enabled=1
-        echo "feature_is_enabled=$feature_is_enabled" >> "$GITHUB_OUTPUT"
+      run: echo "feature_is_enabled=1" >> "$GITHUB_OUTPUT"
   validate_ci_build_passes:
     runs-on: ubuntu-latest
     needs: validate_automerge_feature_enabled
