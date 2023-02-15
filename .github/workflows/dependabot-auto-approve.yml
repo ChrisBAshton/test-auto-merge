@@ -49,5 +49,5 @@ jobs:
       - name: Approve the PR
         uses: hmarr/auto-approve-action@v3.1.0
         with:
-          github-token: ${{ secrets.APPROVE_PR_ACCESS_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }} # ${{ secrets.APPROVE_PR_ACCESS_TOKEN }}
   
