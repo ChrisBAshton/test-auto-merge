@@ -44,6 +44,7 @@ jobs:
             -O \
             -L https://api.github.com/repos/ChrisBAshton/test-auto-merge/contents/feature-flags/auto-merge-dependabot \
           )
+          echo "Auto merge feature enabled? $feature_is_enabled"
           echo "feature_is_enabled=$feature_is_enabled" >> "$GITHUB_OUTPUT"
   validate_ci_build_passes:
     runs-on: ubuntu-latest
