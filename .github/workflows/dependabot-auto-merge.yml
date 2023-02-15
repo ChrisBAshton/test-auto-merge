@@ -27,7 +27,7 @@ jobs:
       - run: echo "PR was approved"
   merge_schedule:
     runs-on: ubuntu-latest
-    needs: [validate_this_is_dependabot, validate_this_is_an_allowed_dependency, validate_ci_build_passes, validate_pr_was_approved]
+    needs: validate_pr_was_approved
     steps:
       - uses: gr2m/merge-schedule-action@v2
         with:
