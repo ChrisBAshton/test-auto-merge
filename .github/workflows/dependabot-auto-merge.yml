@@ -6,8 +6,8 @@ on:
       - edited
       - synchronize
   schedule:
-    # Tuesday-Thursday, 11:30am
-    - cron: "30 11 * * 2-4"
+    # Tuesday-Thursday, 11:40am
+    - cron: "40 11 * * 2-4"
 
 permissions:
   contents: write
