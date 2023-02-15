@@ -1,0 +1,37 @@
+name: Dependabot auto-merge
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+  schedule:
+    # Tuesday-Thursday, 11:30am
+    - cron: "30 11 * * 2-4"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  validate_pr_was_approved:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for tests to succeed
+        uses: lewagon/wait-on-check-action@v1.2.0
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          check-name: auto_approve
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          wait-interval: 10
+      - run: echo "PR was approved"
+  merge_schedule:
+    runs-on: ubuntu-latest
+    needs: [validate_this_is_dependabot, validate_this_is_an_allowed_dependency, validate_ci_build_passes, validate_pr_was_approved]
+    steps:
+      - uses: gr2m/merge-schedule-action@v2
+        with:
+          # Require all pull request statuses to be successful before merging. Default is `false`.
+          require_statuses_success: "true"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
