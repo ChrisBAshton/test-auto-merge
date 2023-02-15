@@ -6,3 +6,4 @@ Testing something else another test
 This should auto merge...
 test
 TEST
+TEST
