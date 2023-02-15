@@ -1,8 +1,5 @@
-name: Dependabot auto-merge
-on:
-  schedule:
-    # * is a special character in YAML so you have to quote this string
-    - cron: "30 9 * * 2-4"
+name: Dependabot auto-approve
+on: pull_request
 
 permissions:
   contents: write
